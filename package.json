@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node src/server/server.js | tee logs/latest-run/server.log & ng serve --proxy-config proxy.config.json | tee logs/latest-run/app.log",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
