@@ -6,6 +6,10 @@ export class AppPage {
   }
 
   getTitleText() {
-    return element(by.css('app-root h1')).getText();
+    return element(by.css('app-root .toolbar-title')).getText();
+  }
+
+  getNthCarText(n) {
+    return element(by.css(`mat-row:nth-of-type(${n})`)).getText();
   }
 }

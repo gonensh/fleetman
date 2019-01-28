@@ -8,7 +8,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "node src/server/server.js | tee logs/latest-run/server.log & ng e2e | tee logs/latest-run/e2e.log"
   },
   "private": true,
   "dependencies": {
