@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node src/server/server.js | tee logs/latest-run/server.log & ng serve --proxy-config proxy.config.json | tee logs/latest-run/app.log",
+    "start": "node src/server/server.js | tee logs/latest-run/server.log & ng serve | tee logs/latest-run/app.log",
+    "start-prod": "node src/server/server.js | tee logs/latest-run/server.log & ng serve --prod=true | tee logs/latest-run/app.log",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
