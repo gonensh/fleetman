@@ -13,23 +13,21 @@ export class TableWithPaginationComponent implements OnInit {
   makes: string[] = [];
   years: number[] = [];
   states: string[] = [];
-  carsLoaded: Promise<Boolean>;
 
   displayedColumns: string[] = ['year', 'make', 'model', 'color'];
   dataSource: MatTableDataSource<Car>;
 
   constructor(carService: CarService) {
-    this.carsLoaded = new Promise((resolve, reject) => {
-      carService.getCars().subscribe(cars => {
-        if (!Array.isArray(cars)) {
-          reject(
-            `Expected carService.getCars() to return an array, instead got: ${cars}`
-          );
-        }
-        this.dataSource = new MatTableDataSource<Car>(cars);
-        this.dataSource.filterPredicate = this.tableFilter();
-        resolve(true);
-      });
+    carService.getCars().subscribe(cars => {
+      if (!Array.isArray(cars)) {
+        throw new Error(
+          `Expected carService.getCars() to return an array, instead got: ${cars}`
+        );
+      }
+      this.dataSource = new MatTableDataSource<Car>(cars);
+      this.dataSource.filterPredicate = this.tableFilter();
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     });
 
     carService.getMakes().subscribe(makes => (this.makes = makes));
@@ -48,11 +46,6 @@ export class TableWithPaginationComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit() {
-    this.carsLoaded.then(() => {
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-    });
-
     this.makesFilter.valueChanges.subscribe(make => {
       this.filterValues.make = make;
       this.dataSource.filter = JSON.stringify(this.filterValues);
