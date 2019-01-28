@@ -1,0 +1,38 @@
+$padding-left: 1em;
+$filter-wrapper-padding: .5em 0 0 $padding-left;
+$table-container-margin: 0 auto;
+$table-container-margin--medium: 1em auto;
+
+.filters-wrapper {
+  padding: $filter-wrapper-padding;
+
+  .mat-form-field-type-mat-select {
+    margin-right: 1em;
+  }
+
+  .mat-form-field-infix {
+    width: 300px;
+  }
+}
+
+.mat-table-container {
+  margin: $table-container-margin;
+  max-width: 1280px;
+  width: 100%;
+
+  @media screen and (min-width: 640px) {
+    margin: $table-container-margin--medium;
+  }
+}
+
+.mat-table {
+  min-height: 300px;
+
+  .mat-cell,
+  .mat-footer-cell,
+  .mat-header-cell {
+    &:first-of-type {
+      max-width: 4em;
+    }
+  }
+}
