@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node src/server/server.js | tee logs/latest-run/server.log & ng serve | tee logs/latest-run/app.log",
-    "start-prod": "node src/server/server.js | tee logs/latest-run/server.log & ng serve --prod=true | tee logs/latest-run/app.log",
+    "start": "./start.sh",
+    "start-prod": "./start.sh prod",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "node src/server/server.js | tee logs/latest-run/server.log & ng e2e | tee logs/latest-run/e2e.log"
+    "e2e": "./start.sh e2e"
   },
   "private": true,
   "dependencies": {
