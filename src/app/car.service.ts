@@ -18,6 +18,8 @@ export class CarService {
     })
   };
 
+  cache = {};
+
   constructor(private http: HttpClient) {}
 
   private extractData(res: Response) {
@@ -25,25 +27,34 @@ export class CarService {
     return body || {};
   }
 
+  getData(type, id): Observable<any> {
+    id = id || '';
+    if (typeof this.cache[type + id] !== 'undefined') {
+      return this.cache[type + id];
+    } else {
+      return this.http
+        .get(this.endpoint + type + (id ? `/${id}` : ''))
+        .pipe(map(this.extractData));
+    }
+  }
+
   getCars(): Observable<any> {
-    return this.http.get(this.endpoint + 'cars').pipe(map(this.extractData));
+    return this.getData('cars', null);
   }
 
   getMakes(): Observable<any> {
-    return this.http.get(this.endpoint + 'makes').pipe(map(this.extractData));
+    return this.getData('makes', null);
   }
 
   getYears(): Observable<any> {
-    return this.http.get(this.endpoint + 'years').pipe(map(this.extractData));
+    return this.getData('years', null);
   }
 
   getStates(): Observable<any> {
-    return this.http.get(this.endpoint + 'states').pipe(map(this.extractData));
+    return this.getData('states', null);
   }
 
   getCar(id): Observable<any> {
-    return this.http
-      .get(this.endpoint + 'cars/' + id)
-      .pipe(map(this.extractData));
+    return this.getData('cars', id);
   }
 }
