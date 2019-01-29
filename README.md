@@ -6,8 +6,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `npm start` or `./start.sh` for a dev server.
-Navigate to `http://localhost:4200`.
+- Run `npm start` or `./start.sh` for a dev server.
+- Navigate to `http://localhost:4200`.
+
 The required Express server will be started and stopped automatically (at `http://localhost:3000`).
 
 _**Important!** Do not use `ng serve` as it will not start the Express server._
@@ -17,7 +18,9 @@ _**Important!** Do not use `ng serve` as it will not start the Express server._
 > _Note: This command will start the Angular **dev server** in production mode. Do not use it in production._
 > For production use, build the project and use the output found in the /dist folder.
 
-Run `npm run start-prod` or `./start.sh prod` for a production version (still running on the webpack dev server). Navigate to `http://localhost:4200`.
+- Run `npm run start-prod` or `./start.sh prod`.
+- Navigate to `http://localhost:4200`.
+
 The required Express server will be started and stopped automatically (at `http://localhost:3000`).
 
 _**Important!** Do not use `ng serve` as it will not start the Express server._
