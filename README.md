@@ -1,27 +1,33 @@
-# Fleetman
+# FleetMan
+
+Fleet Manager – Inventory Viewer
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.2.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm start` or `./start.sh` for a dev server.
+Navigate to `http://localhost:4200`.
+The required Express server will be started and stopped automatically (at `http://localhost:3000`).
 
-## Code scaffolding
+_**Important!** Do not use `ng serve` as it will not start the Express server._
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Production server (Do not use for actual production!)
 
-## Build
+> _Note: This command will start the Angular **dev server** in production mode. Do not use it in production._
+> For production use, build the project and use the output found in the /dist folder.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `npm run start-prod` or `./start.sh prod` for a production version (still running on the webpack dev server). Navigate to `http://localhost:4200`.
+The required Express server will be started and stopped automatically (at `http://localhost:3000`).
+
+_**Important!** Do not use `ng serve` as it will not start the Express server._
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `npm test` or `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 ## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Run `npm run e2e` or `./start.sh e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+_**Important!** Do not use `ng e2e` as it will not start the Express server._
