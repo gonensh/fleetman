@@ -4,14 +4,17 @@ const cars = require('./MOCK_DATA');
 
 const port = 3000;
 
-var makes = {},
-  years = {};
+var makeCounters = {},
+  yearCounters = {};
 
 // ETL the data in lieu of a database
 cars.forEach(car => {
-  makes[car.make] = makes[car.make] ? makes[car.make] + 1 : 1;
-  years[car.year] = years[car.year] ? years[car.year] + 1 : 1;
+  makeCounters[car.make] = makeCounters[car.make] ? makeCounters[car.make] + 1 : 1;
+  yearCounters[car.year] = yearCounters[car.year] ? yearCounters[car.year] + 1 : 1;
 });
+
+var makes = Object.keys(makeCounters).sort(),
+  years = Object.keys(yearCounters).sort();
 
 // Expose endpoints
 app.get('/api/v1/cars/:id', (req, res) => {
@@ -21,10 +24,10 @@ app.get('/api/v1/cars/:id', (req, res) => {
     res.send(cars);
   })
   .get('/api/v1/makes', (req, res) => {
-    res.send(Object.keys(makes).sort());
+    res.send(makes);
   })
   .get('/api/v1/years', (req, res) => {
-    res.send(Object.keys(years).sort());
+    res.send(years);
   })
 
   // Serve the built application
